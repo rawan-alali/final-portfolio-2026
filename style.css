@@ -194,9 +194,9 @@ h1 {
 .face-stage {
   position: absolute;
   top: clamp(92px, 10vh, 122px);
-  right: clamp(120px, 8vw, 190px);
+  right: clamp(105px, 7vw, 170px);
   bottom: 0;
-  width: min(44vw, 720px);
+  width: min(46vw, 760px);
   min-height: 0;
   margin-left: 0;
   display: grid;
@@ -207,8 +207,8 @@ h1 {
 .face-shell {
   --face-lift: clamp(-34px, -2.5vh, -18px);
   position: relative;
-  width: min(42vw, 680px);
-  min-width: 480px;
+  width: min(44vw, 720px);
+  min-width: 500px;
   aspect-ratio: 1536 / 1024;
   filter:
     drop-shadow(0 0 38px rgba(255, 91, 215, 0.24))
@@ -1221,4 +1221,5 @@ h1 {
     margin-top: 24px;
   }
 }
+
 
