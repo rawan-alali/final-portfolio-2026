@@ -116,10 +116,10 @@ button {
 
 .hero-copy {
   position: absolute;
-  top: 25vh;
-  left: clamp(48px, 7vw, 112px);
+  top: clamp(190px, 25vh, 250px);
+  left: clamp(52px, 6vw, 108px);
   z-index: 12;
-  width: min(430px, 34vw);
+  width: min(500px, 38vw);
 }
 
 .eyebrow,
@@ -180,25 +180,34 @@ h1 {
   box-shadow: 0 0 18px var(--brain);
 }
 
+.work-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
 /* Desktop face interaction area. */
 .face-stage {
   position: absolute;
-  top: clamp(76px, 8vh, 104px);
-  right: 0;
+  top: clamp(92px, 10vh, 122px);
+  right: clamp(-110px, -5vw, -52px);
   bottom: 0;
-  width: min(72vw, 1160px);
+  width: min(64vw, 1040px);
   min-height: 0;
   margin-left: 0;
   display: grid;
   place-items: center;
-  transform: translateX(clamp(80px, 9vw, 150px));
+  transform: none;
 }
 
 .face-shell {
-  --face-lift: clamp(-52px, -3.5vh, -24px);
+  --face-lift: clamp(-34px, -2.5vh, -18px);
   position: relative;
-  width: min(64vw, 1040px);
-  min-width: 720px;
+  width: min(58vw, 920px);
+  min-width: 640px;
   aspect-ratio: 1536 / 1024;
   filter:
     drop-shadow(0 0 38px rgba(255, 91, 215, 0.24))
@@ -211,7 +220,7 @@ h1 {
   filter:
     drop-shadow(0 0 24px rgba(255, 91, 215, 0.16))
     drop-shadow(0 0 52px rgba(85, 200, 255, 0.1));
-  transform: translateY(var(--face-lift)) scale(0.86) translateX(-2vw);
+  transform: translateY(var(--face-lift)) scale(0.86) translateX(-1vw);
 }
 
 .face-image {
