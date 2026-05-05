@@ -1158,6 +1158,13 @@ h1 {
     line-height: 1.7;
   }
 
+  .mobile-card em {
+    display: block;
+    margin-top: 12px;
+    color: color-mix(in srgb, var(--card-color), white 24%);
+    font-style: italic;
+  }
+
   .mobile-card a {
     --active-color: var(--card-color);
   }
@@ -1221,5 +1228,4 @@ h1 {
     margin-top: 24px;
   }
 }
-
 
