@@ -193,9 +193,9 @@ h1 {
 .face-stage {
   position: absolute;
   top: clamp(92px, 10vh, 122px);
-  right: clamp(170px, 13vw, 260px);
+  right: clamp(300px, 20vw, 420px);
   bottom: 0;
-  width: min(58vw, 960px);
+  width: min(54vw, 900px);
   min-height: 0;
   margin-left: 0;
   display: grid;
@@ -206,8 +206,8 @@ h1 {
 .face-shell {
   --face-lift: clamp(-34px, -2.5vh, -18px);
   position: relative;
-  width: min(54vw, 860px);
-  min-width: 610px;
+  width: min(50vw, 800px);
+  min-width: 560px;
   aspect-ratio: 1536 / 1024;
   filter:
     drop-shadow(0 0 38px rgba(255, 91, 215, 0.24))
@@ -459,9 +459,9 @@ h1 {
 
 /* Floating project card that changes based on the clicked feature. */
 .project-popup {
-  position: absolute;
-  z-index: 8;
-  width: min(300px, 22vw);
+  position: fixed;
+  z-index: 18;
+  width: clamp(260px, 19vw, 310px);
   max-height: calc(100vh - 170px);
   padding: 24px 22px;
   overflow-y: auto;
@@ -481,23 +481,23 @@ h1 {
 }
 
 .project-popup[data-feature="brain"] {
-  top: 12%;
-  right: clamp(54px, 4.2vw, 82px);
+  top: clamp(170px, 23vh, 235px);
+  right: clamp(46px, 4vw, 82px);
 }
 
 .project-popup[data-feature="eye"] {
-  top: 31%;
-  right: clamp(54px, 4.2vw, 82px);
+  top: clamp(210px, 30vh, 310px);
+  right: clamp(46px, 4vw, 82px);
 }
 
 .project-popup[data-feature="ear"] {
-  top: 24%;
-  right: clamp(54px, 4.2vw, 82px);
+  top: clamp(190px, 27vh, 280px);
+  right: clamp(46px, 4vw, 82px);
 }
 
 .project-popup[data-feature="mouth"] {
-  right: clamp(54px, 4.2vw, 82px);
-  bottom: 9%;
+  right: clamp(46px, 4vw, 82px);
+  bottom: clamp(46px, 8vh, 90px);
 }
 
 .close-popup {
