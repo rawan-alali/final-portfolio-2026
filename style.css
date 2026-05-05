@@ -182,17 +182,20 @@ h1 {
 
 /* Desktop face interaction area. */
 .face-stage {
-  position: relative;
+  position: absolute;
+  top: clamp(76px, 8vh, 104px);
+  right: 0;
+  bottom: 0;
   width: min(72vw, 1160px);
-  height: min(78vh, 820px);
-  min-height: 650px;
-  margin-left: auto;
+  min-height: 0;
+  margin-left: 0;
   display: grid;
   place-items: center;
   transform: translateX(clamp(80px, 9vw, 150px));
 }
 
 .face-shell {
+  --face-lift: clamp(-52px, -3.5vh, -24px);
   position: relative;
   width: min(64vw, 1040px);
   min-width: 720px;
@@ -200,6 +203,7 @@ h1 {
   filter:
     drop-shadow(0 0 38px rgba(255, 91, 215, 0.24))
     drop-shadow(0 0 70px rgba(85, 200, 255, 0.16));
+  transform: translateY(var(--face-lift));
   transition: filter 420ms ease-in-out, transform 420ms ease-in-out;
 }
 
@@ -207,7 +211,7 @@ h1 {
   filter:
     drop-shadow(0 0 24px rgba(255, 91, 215, 0.16))
     drop-shadow(0 0 52px rgba(85, 200, 255, 0.1));
-  transform: scale(0.86) translateX(-2vw);
+  transform: translateY(var(--face-lift)) scale(0.86) translateX(-2vw);
 }
 
 .face-image {
