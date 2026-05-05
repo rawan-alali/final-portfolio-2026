@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anatomy of Expression | Rawan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Main navigation for the portfolio pages. -->
+    <header class="site-header">
+      <a class="brand" href="index.html#home" aria-label="Rawan Al Ali home">Rawan Al Ali</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html#work">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Main landing section: the intro text sets up the anatomy metaphor. -->
+      <section class="hero" id="home" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Personal Portfolio</p>
+          <h1 id="page-title">Anatomy of Expression</h1>
+          <p class="intro">
+            This is how I think, speak, and create. Each part is built around a
+            different sense, showing how ideas take shape through sight, sound,
+            and story, while the brain holds the foundation of it all.
+          </p>
+          <p class="hint">Hover to explore. Click to reveal.</p>
+        </div>
+
+        <!-- Desktop version of the interactive face. -->
+        <section class="face-stage" id="work" aria-label="Interactive project anatomy">
+          <!-- These dotted lines only show after a feature is clicked. -->
+          <svg class="connector-layer" viewBox="0 0 1000 760" aria-hidden="true">
+            <path class="connector connector-brain" d="M500 180 C625 112 760 120 875 180" />
+            <path class="connector connector-eye" d="M430 332 C610 292 745 300 872 350" />
+            <path class="connector connector-ear" d="M642 354 C775 310 840 330 905 424" />
+            <path class="connector connector-mouth" d="M520 485 C690 545 760 615 870 645" />
+          </svg>
+
+          <div class="face-shell" id="faceShell">
+            <img
+              class="face-image"
+              src="face.svg"
+              alt="Abstract glowing face used as the interactive anatomy"
+            />
+            <!-- The SVG layer sits above the face image and holds all clickable areas. -->
+            <svg class="expression-face hotspot-layer" viewBox="0 0 1536 1024" role="group" aria-label="Interactive face hotspots">
+              <defs>
+                <filter id="softGlow">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <g class="feature-button brain-feature" data-feature="brain" role="button" tabindex="0" aria-label="Reveal Project 1, brain">
+                <ellipse class="hit-zone" cx="768" cy="245" rx="210" ry="150" />
+                <ellipse class="hover-aura brain-aura" cx="768" cy="282" rx="138" ry="92" />
+                <g class="hotspot-glow brain-glow">
+                  <circle class="feature-halo" cx="768" cy="276" r="78" />
+                  <path d="M714 280 C704 254 724 234 750 244 C762 218 800 225 803 252 C834 247 850 280 828 302 C842 329 809 350 783 332 C762 357 725 340 735 309 C713 311 701 297 714 280 Z" />
+                  <path d="M745 277 C760 270 770 281 762 295 C782 289 795 299 791 315 M799 264 C785 272 782 285 790 298 M816 293 C804 297 802 306 810 316 M742 314 C758 311 773 318 781 331" />
+                </g>
+              </g>
+
+              <g class="feature-button eye-feature" data-feature="eye" role="button" tabindex="0" aria-label="Reveal Project 4, eyes">
+                <ellipse class="hit-zone" cx="768" cy="452" rx="350" ry="118" />
+                <ellipse class="hover-aura eye-aura" cx="660" cy="448" rx="108" ry="40" />
+                <ellipse class="hover-aura eye-aura" cx="876" cy="448" rx="108" ry="40" />
+                <g class="hotspot-glow eye-glow">
+                  <path class="left-eye" d="M575 450 C628 416 699 420 733 459 C675 478 620 474 575 450 Z" />
+                  <path class="right-eye" d="M961 450 C908 416 837 420 803 459 C861 478 916 474 961 450 Z" />
+                  <path class="eye-lid" d="M590 405 C642 375 706 381 744 414 M946 405 C894 375 830 381 792 414" />
+                  <circle class="eye-spark left-spark" cx="660" cy="449" r="8" />
+                  <circle class="eye-spark right-spark" cx="876" cy="449" r="8" />
+                </g>
+              </g>
+
+              <g class="feature-button ear-feature" data-feature="ear" role="button" tabindex="0" aria-label="Reveal Project 3, ears">
+                <ellipse class="hit-zone" cx="520" cy="500" rx="95" ry="160" />
+                <ellipse class="hit-zone" cx="1016" cy="500" rx="95" ry="160" />
+                <circle class="hover-aura ear-aura" cx="505" cy="506" r="62" />
+                <circle class="hover-aura ear-aura" cx="1031" cy="506" r="62" />
+                <g class="hotspot-glow ear-glow">
+                  <circle class="ear-dot" cx="505" cy="506" r="17" />
+                  <circle class="ear-dot" cx="1031" cy="506" r="17" />
+                  <path class="left-ear-ripple" d="M452 449 C410 478 410 535 452 564" />
+                  <path class="left-ear-ripple" d="M414 421 C348 468 348 545 414 592" />
+                  <path class="left-ear-ripple faint-ripple" d="M376 391 C286 455 286 558 376 622" />
+                  <path class="right-ear-ripple" d="M1084 449 C1126 478 1126 535 1084 564" />
+                  <path class="right-ear-ripple" d="M1122 421 C1188 468 1188 545 1122 592" />
+                  <path class="right-ear-ripple faint-ripple" d="M1160 391 C1250 455 1250 558 1160 622" />
+                </g>
+              </g>
+
+              <g class="feature-button mouth-feature" data-feature="mouth" role="button" tabindex="0" aria-label="Reveal Project 2, mouth">
+                <ellipse class="hit-zone" cx="782" cy="680" rx="95" ry="56" />
+                <ellipse class="hover-aura mouth-aura" cx="782" cy="680" rx="112" ry="72" />
+                <g class="hotspot-glow mouth-glow">
+                  <ellipse class="speech-mouth" cx="782" cy="680" rx="68" ry="23" />
+                  <path class="upper-lip" d="M709 679 C739 657 764 657 782 674 C800 657 825 657 855 679" />
+                  <path class="lower-lip" d="M714 685 C752 705 812 705 850 685" />
+                  <path class="mouth-seam" d="M725 680 C758 676 806 676 839 680" />
+                  <circle class="voice-dot" cx="782" cy="680" r="13" />
+                  <path class="voice-wave" d="M662 722 C730 741 834 741 902 722" />
+                  <path class="voice-wave" d="M630 746 C716 773 848 773 934 746" />
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <!-- This one popup gets reused for every project through JavaScript. -->
+          <article class="project-popup" id="projectPopup" aria-live="polite" hidden>
+            <button class="close-popup" type="button" aria-label="Close project panel">x</button>
+            <div class="feature-icon popup-mark" id="popupMark" aria-hidden="true"></div>
+            <p class="popup-kicker" id="popupKicker"></p>
+            <h2 id="popupTitle"></h2>
+            <p id="popupDescription"></p>
+            <a class="project-link" id="popupLink" href="https://rawan-alali.github.io/Project-1-comms-lab-2026/" target="_blank" rel="noreferrer">View Project</a>
+          </article>
+        </section>
+
+        <!-- Mobile version: cards are easier to tap than tiny face features. -->
+        <section class="mobile-work" aria-label="Projects">
+          <article class="mobile-card brain-card">
+            <div class="feature-icon brain-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M18 30c-5 0-8-3-8-7 0-3 2-5 5-6 1-4 5-6 9-4 2-3 8-2 9 2 4 0 7 3 7 7 0 4-3 7-7 7"/><path d="M24 13v22M17 18c4 0 5 3 3 6m11-7c-4 1-5 4-3 7m-12 6c3-3 7-3 10 0m7-2c-2-3-1-6 2-8"/></svg>
+            </div>
+            <span>Project 1</span>
+            <h2>Where It Started</h2>
+            <p>My first steps into interactive storytelling. This project represents the beginning of my work with web-based experiences and how I started turning ideas into something users could explore.</p>
+            <a href="https://rawan-alali.github.io/Project-1-comms-lab-2026/" target="_blank" rel="noreferrer">View Project 1</a>
+          </article>
+          <article class="mobile-card eye-card">
+            <div class="feature-icon eye-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M7 24s6-9 17-9 17 9 17 9-6 9-17 9S7 24 7 24Z"/><circle cx="24" cy="24" r="5"/></svg>
+            </div>
+            <span>Project 4</span>
+            <h2>Where You See What I See</h2>
+            <p>A video-based project focused on visual storytelling, motion, and perspective. This project represents how images, scenes, and movement can shape the way a story is experienced.</p>
+            <a href="https://mimisosparkle.github.io/commLab-video-project/" target="_blank" rel="noreferrer">View Project 4</a>
+          </article>
+          <article class="mobile-card ear-card">
+            <div class="feature-icon ear-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M29 35c0-6 7-7 7-16 0-7-5-11-12-11S12 13 12 20"/><path d="M18 20c0-4 3-7 7-7s7 3 7 7c0 7-7 8-7 13 0 4-3 7-7 7-2 0-4-1-5-3"/><path d="M20 21c0-3 2-5 5-5s5 2 5 5"/></svg>
+            </div>
+            <span>Project 3</span>
+            <h2>Where Things Come Alive</h2>
+            <p>A sound-focused project that explores how audio can shape atmosphere, emotion, and immersion. This project represents the way sound can make a digital experience feel more alive.</p>
+            <a href="https://nadsb26.github.io/commslab-project3/" target="_blank" rel="noreferrer">View Project 3</a>
+          </article>
+          <article class="mobile-card mouth-card">
+            <div class="feature-icon mouth-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M8 24c5-5 10-7 16-2 6-5 11-3 16 2-6 5-26 5-32 0Z"/><path d="M10 24c6 3 22 3 28 0"/></svg>
+            </div>
+            <span>Project 2</span>
+            <h2>Where I Tell Stories</h2>
+            <p>An interactive comic project that uses visuals, pacing, and interaction to tell a story. This project represents narrative, voice, and the way stories can unfold through user engagement.</p>
+            <a href="https://rawan-alali.github.io/comic-1/" target="_blank" rel="noreferrer">View Project 2</a>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

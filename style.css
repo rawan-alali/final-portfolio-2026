@@ -1,0 +1,1207 @@
+/* Main color palette for the four parts of expression. */
+:root {
+  --bg: #020204;
+  --charcoal: #09090e;
+  --text: #f8f4ee;
+  --muted: #b7b0b8;
+  --brain: #d946ef;
+  --eye: #3b82f6;
+  --ear: #22c55e;
+  --mouth: #fb923c;
+  --active-color: var(--brain);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 49% 38%, rgba(109, 61, 153, 0.18), transparent 29rem),
+    radial-gradient(circle at 78% 68%, rgba(255, 138, 61, 0.09), transparent 23rem),
+    radial-gradient(circle at 20% 80%, rgba(85, 200, 255, 0.07), transparent 25rem),
+    linear-gradient(135deg, #010104 0%, #07070b 42%, #020204 100%);
+  font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+/* A subtle texture so the black background does not feel flat. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  mask-image: radial-gradient(circle at center, black 10%, transparent 86%);
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px clamp(22px, 4vw, 64px);
+  mix-blend-mode: screen;
+}
+
+.brand {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.main-nav {
+  display: flex;
+  gap: clamp(24px, 4vw, 58px);
+  color: #f6f0f4;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.main-nav a {
+  position: relative;
+  padding-block: 8px;
+}
+
+.main-nav a::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Homepage intro and layout. */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 110px clamp(22px, 4vw, 64px) 48px;
+}
+
+.hero-copy {
+  position: absolute;
+  top: 25vh;
+  left: clamp(48px, 7vw, 112px);
+  z-index: 12;
+  width: min(430px, 34vw);
+}
+
+.eyebrow,
+.hint,
+.popup-kicker,
+.mobile-card span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+}
+
+h1 {
+  margin-top: 14px;
+  font-size: clamp(3.2rem, 6.25vw, 7.1rem);
+  line-height: 0.88;
+  color: var(--text);
+  background:
+    linear-gradient(110deg, #fff7df 0%, #71d6ff 28%, #ff7ddd 58%, #ff9a42 84%, #f8f4ee 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-wrap: balance;
+  filter:
+    drop-shadow(0 0 18px rgba(255, 91, 215, 0.38))
+    drop-shadow(0 0 36px rgba(85, 200, 255, 0.22));
+}
+
+.intro {
+  margin: 36px 0 0;
+  color: #d5ced5;
+  font-size: clamp(0.98rem, 1.15vw, 1.22rem);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+  color: #f5d0ef;
+}
+
+.hint::before {
+  width: 7px;
+  height: 7px;
+  content: "";
+  border-radius: 50%;
+  background: var(--brain);
+  box-shadow: 0 0 18px var(--brain);
+}
+
+/* Desktop face interaction area. */
+.face-stage {
+  position: relative;
+  width: min(72vw, 1160px);
+  height: min(78vh, 820px);
+  min-height: 650px;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  transform: translateX(clamp(80px, 9vw, 150px));
+}
+
+.face-shell {
+  position: relative;
+  width: min(64vw, 1040px);
+  min-width: 720px;
+  aspect-ratio: 1536 / 1024;
+  filter:
+    drop-shadow(0 0 38px rgba(255, 91, 215, 0.24))
+    drop-shadow(0 0 70px rgba(85, 200, 255, 0.16));
+  transition: filter 420ms ease-in-out, transform 420ms ease-in-out;
+}
+
+.face-shell.is-dimmed {
+  filter:
+    drop-shadow(0 0 24px rgba(255, 91, 215, 0.16))
+    drop-shadow(0 0 52px rgba(85, 200, 255, 0.1));
+  transform: scale(0.86) translateX(-2vw);
+}
+
+.face-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  filter: saturate(1.22) contrast(1.08) brightness(1.05);
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(ellipse at 50% 52%, black 42%, rgba(0, 0, 0, 0.86) 61%, transparent 79%);
+  transition: opacity 420ms ease-in-out, filter 420ms ease-in-out;
+}
+
+.face-stage.is-hovering .face-image {
+  opacity: 0.92;
+  filter: saturate(1.08) contrast(1.04) brightness(0.94);
+}
+
+.face-shell.is-dimmed .face-image {
+  opacity: 0.9;
+  filter: saturate(1.02) contrast(1.02) brightness(0.9);
+}
+
+.expression-face,
+.connector-layer {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.hotspot-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.feature-button {
+  cursor: pointer;
+  outline: none;
+}
+
+.feature-button,
+.feature-button * {
+  pointer-events: all;
+}
+
+.hit-zone {
+  fill: transparent;
+  stroke: transparent;
+}
+
+/* Hover is just aura; click reveals the actual feature drawing. */
+.hotspot-glow,
+.hover-aura {
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 420ms ease-in-out, transform 420ms ease-in-out, filter 420ms ease-in-out;
+}
+
+.hover-aura {
+  fill: currentColor;
+  pointer-events: none;
+}
+
+.brain-aura {
+  color: var(--brain);
+  filter: blur(14px) saturate(1.35) drop-shadow(0 0 30px rgba(217, 70, 239, 0.58));
+}
+
+.eye-aura {
+  color: var(--eye);
+  filter: blur(13px) saturate(1.35) drop-shadow(0 0 30px rgba(59, 130, 246, 0.58));
+}
+
+.ear-aura {
+  color: var(--ear);
+  filter: blur(15px) saturate(1.38) drop-shadow(0 0 34px rgba(34, 197, 94, 0.58));
+}
+
+.mouth-aura {
+  color: var(--mouth);
+  filter: blur(14px) saturate(1.38) drop-shadow(0 0 36px rgba(251, 146, 60, 0.62));
+}
+
+.hotspot-glow path,
+.hotspot-glow circle,
+.hotspot-glow ellipse {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brain-glow path,
+.brain-glow circle {
+  stroke: var(--brain);
+  stroke-width: 5.2;
+  filter:
+    saturate(1.55)
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.32))
+    drop-shadow(0 0 14px var(--brain))
+    drop-shadow(0 0 34px rgba(217, 70, 239, 0.52));
+}
+
+.brain-glow circle {
+  stroke-width: 1.9;
+  opacity: 0.5;
+}
+
+.eye-glow path,
+.eye-glow circle {
+  stroke: var(--eye);
+  stroke-width: 4.05;
+  filter:
+    saturate(1.55)
+    drop-shadow(0 0 13px var(--eye))
+    drop-shadow(0 0 38px rgba(59, 130, 246, 0.54));
+}
+
+.ear-glow path {
+  stroke: var(--ear);
+  stroke-width: 5.6;
+  filter:
+    saturate(1.6)
+    drop-shadow(0 0 13px var(--ear))
+    drop-shadow(0 0 42px rgba(34, 197, 94, 0.54));
+}
+
+.mouth-glow path {
+  stroke: var(--mouth);
+  stroke-width: 4.8;
+  filter:
+    saturate(1.6)
+    drop-shadow(0 0 14px var(--mouth))
+    drop-shadow(0 0 44px rgba(251, 146, 60, 0.58));
+}
+
+.speech-mouth,
+.voice-dot,
+.ear-dot {
+  fill: currentColor;
+}
+
+.speech-mouth {
+  color: rgba(251, 146, 60, 0.18);
+}
+
+.voice-dot,
+.ear-dot {
+  opacity: 0.9;
+}
+
+.voice-wave {
+  opacity: 0.82;
+}
+
+.faint-ripple {
+  opacity: 0.32;
+}
+
+.feature-button:hover .hover-aura,
+.feature-button:focus-visible .hover-aura {
+  opacity: 0.34;
+}
+
+.feature-button.is-active .hotspot-glow {
+  opacity: 0.94;
+}
+
+.feature-button.is-active .hover-aura {
+  opacity: 0.48;
+}
+
+.feature-button:focus-visible .hit-zone {
+  stroke: rgba(255, 255, 255, 0.38);
+  stroke-width: 3;
+}
+
+.brain-feature.is-active .brain-glow {
+  animation: brainPulse 1.8s ease infinite;
+}
+
+.eye-feature.is-active .eye-glow {
+  transform: scaleY(1.04);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: eyeFocus 2.6s ease-in-out infinite;
+}
+
+.eye-feature.is-active .eye-spark {
+  fill: var(--eye);
+  opacity: 0.55;
+}
+
+.ear-feature.is-active .ear-glow {
+  transform: scale(1.02);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.mouth-feature.is-active .mouth-glow {
+  transform: scaleY(1.02);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mouthPulse 1.9s ease-in-out infinite;
+}
+
+.connector-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.connector {
+  opacity: 0;
+  fill: none;
+  stroke: var(--active-color);
+  stroke-width: 1.8;
+  stroke-dasharray: 8 12;
+  filter:
+    drop-shadow(0 0 8px var(--active-color))
+    drop-shadow(0 0 18px var(--active-color));
+  transition: opacity 420ms ease-in-out;
+}
+
+.face-stage[data-active="brain"] .connector-brain,
+.face-stage[data-active="eye"] .connector-eye,
+.face-stage[data-active="ear"] .connector-ear,
+.face-stage[data-active="mouth"] .connector-mouth {
+  opacity: 0.68;
+  animation: dashMove 1.8s linear infinite;
+}
+
+/* Floating project card that changes based on the clicked feature. */
+.project-popup {
+  position: absolute;
+  z-index: 8;
+  width: min(330px, 26vw);
+  padding: 30px 28px;
+  border: 1px solid color-mix(in srgb, var(--active-color), white 10%);
+  border-radius: 22px;
+  color: var(--text);
+  background: rgba(5, 5, 10, 0.76);
+  box-shadow:
+    inset 0 0 26px color-mix(in srgb, var(--active-color), transparent 92%),
+    0 0 22px color-mix(in srgb, var(--active-color), transparent 62%),
+    0 0 58px color-mix(in srgb, var(--active-color), transparent 82%);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  transform: translateY(14px) scale(0.95);
+  transform-origin: center;
+  animation: panelIn 420ms ease-in-out forwards;
+}
+
+.project-popup[data-feature="brain"] {
+  top: 12%;
+  right: clamp(58px, 7vw, 118px);
+}
+
+.project-popup[data-feature="eye"] {
+  top: 31%;
+  right: clamp(58px, 7vw, 118px);
+}
+
+.project-popup[data-feature="ear"] {
+  top: 24%;
+  right: clamp(58px, 7vw, 118px);
+}
+
+.project-popup[data-feature="mouth"] {
+  right: clamp(58px, 7vw, 118px);
+  bottom: 9%;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 300ms ease-in-out, background 300ms ease-in-out, filter 300ms ease-in-out;
+}
+
+.close-popup:hover,
+.close-popup:focus-visible {
+  color: var(--text);
+  background: color-mix(in srgb, var(--active-color), transparent 88%);
+  filter: drop-shadow(0 0 10px var(--active-color));
+}
+
+/* Reusable neon icon tile used in popups, mobile cards, and contact. */
+.feature-icon {
+  --icon-color: var(--active-color);
+  position: relative;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 18px;
+  border: 1.5px solid currentColor;
+  border-radius: 16px;
+  color: var(--icon-color);
+  background:
+    radial-gradient(circle at center, color-mix(in srgb, var(--icon-color), transparent 84%), transparent 62%),
+    rgba(5, 6, 10, 0.54);
+  box-shadow:
+    inset 0 0 22px color-mix(in srgb, var(--icon-color), transparent 78%),
+    0 0 18px color-mix(in srgb, var(--icon-color), transparent 26%),
+    0 0 44px color-mix(in srgb, var(--icon-color), transparent 68%);
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--icon-color), transparent 4%));
+}
+
+.feature-icon::before,
+.feature-icon::after {
+  position: absolute;
+  content: "";
+}
+
+.brain-icon,
+.popup-mark[data-mark="idea"] {
+  --icon-color: var(--brain);
+}
+
+.brain-icon::before,
+.popup-mark[data-mark="idea"]::before {
+  inset: 15px 16px 18px;
+  border: 2px solid currentColor;
+  border-radius: 48% 54% 45% 58%;
+  box-shadow: inset 10px 0 0 -7px currentColor, inset -12px 6px 0 -9px currentColor;
+}
+
+.brain-icon::after,
+.popup-mark[data-mark="idea"]::after {
+  left: 31px;
+  bottom: 14px;
+  width: 9px;
+  height: 12px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0 0 0 10px;
+}
+
+.eye-icon,
+.popup-mark[data-mark="vision"] {
+  --icon-color: var(--eye);
+}
+
+.eye-icon::before,
+.popup-mark[data-mark="vision"]::before {
+  inset: 20px 14px;
+  border: 2px solid currentColor;
+  border-radius: 70% 30% 70% 30% / 55% 45% 55% 45%;
+  transform: rotate(45deg);
+}
+
+.eye-icon::after,
+.popup-mark[data-mark="vision"]::after {
+  top: 22px;
+  left: 23px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.ear-icon,
+.popup-mark[data-mark="sound"] {
+  --icon-color: var(--ear);
+}
+
+.ear-icon::before,
+.popup-mark[data-mark="sound"]::before {
+  top: 14px;
+  left: 20px;
+  width: 16px;
+  height: 24px;
+  border: 2px solid currentColor;
+  border-radius: 60% 45% 55% 60%;
+}
+
+.ear-icon::after,
+.popup-mark[data-mark="sound"]::after {
+  top: 19px;
+  left: 35px;
+  width: 8px;
+  height: 18px;
+  border-right: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.mouth-icon,
+.popup-mark[data-mark="story"] {
+  --icon-color: var(--mouth);
+}
+
+.mouth-icon::before,
+.popup-mark[data-mark="story"]::before {
+  top: 23px;
+  left: 14px;
+  width: 30px;
+  height: 12px;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.mouth-icon::after,
+.popup-mark[data-mark="story"]::after {
+  top: 29px;
+  left: 18px;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.feature-icon:has(svg) {
+  display: grid;
+  place-items: center;
+}
+
+.feature-icon:has(svg)::before,
+.feature-icon:has(svg)::after,
+.popup-mark:has(svg)::before,
+.popup-mark:has(svg)::after {
+  display: none;
+}
+
+.feature-icon svg {
+  width: 31px;
+  height: 31px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brain-icon svg,
+.popup-mark[data-mark="idea"] svg {
+  width: 33px;
+  height: 33px;
+}
+
+.mouth-icon svg,
+.popup-mark[data-mark="story"] svg {
+  width: 34px;
+}
+
+.project-popup h2 {
+  margin: 14px 0 18px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.project-popup p:not(.popup-kicker) {
+  margin: 0 0 10px;
+  color: #d6d0d8;
+  font-size: 0.95rem;
+  line-height: 1.72;
+}
+
+.popup-note {
+  display: block;
+  margin-top: 16px;
+  color: color-mix(in srgb, var(--active-color), white 24%);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.project-link,
+.mobile-card a,
+.contact-section a,
+.contact-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 0 18px;
+  border: 1px solid var(--active-color);
+  border-radius: 999px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--active-color), transparent 88%);
+  box-shadow:
+    inset 0 0 16px color-mix(in srgb, var(--active-color), transparent 88%),
+    0 0 22px color-mix(in srgb, var(--active-color), transparent 54%);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mobile-work {
+  display: none;
+}
+
+.about-section,
+.contact-section {
+  position: relative;
+  width: min(760px, calc(100% - 44px));
+  margin: 0 auto;
+  padding: 115px 0;
+}
+
+.section-rule {
+  width: 74px;
+  height: 1px;
+  margin-bottom: 34px;
+  background: linear-gradient(90deg, var(--brain), transparent);
+  box-shadow: 0 0 14px var(--brain);
+}
+
+.about-section h2,
+.contact-section h2 {
+  margin: 12px 0 24px;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+}
+
+.about-section p:not(.eyebrow) {
+  color: #d4ccd7;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.contact-section {
+  min-height: 48vh;
+  text-align: center;
+}
+
+.contact-section a {
+  --active-color: var(--eye);
+}
+
+/* About page layout. */
+.about-page main {
+  min-height: 100vh;
+  padding: 132px clamp(22px, 7vw, 104px) 72px;
+}
+
+.about-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(520px, 1.12fr) minmax(320px, 0.68fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  width: min(1120px, 100%);
+  min-height: calc(100vh - 204px);
+  margin: 0 auto;
+}
+
+.about-hero::after {
+  position: absolute;
+  right: -6vw;
+  bottom: -18vh;
+  z-index: -1;
+  width: min(48vw, 620px);
+  aspect-ratio: 1;
+  content: "";
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(217, 70, 239, 0.13), transparent 36%),
+    radial-gradient(circle at 68% 42%, rgba(59, 130, 246, 0.11), transparent 34%),
+    radial-gradient(circle at 45% 72%, rgba(251, 146, 60, 0.09), transparent 32%);
+  filter: blur(26px);
+  opacity: 0.62;
+}
+
+.about-panel {
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(7, 7, 12, 0.54);
+  max-width: 780px;
+  box-shadow: 0 0 30px rgba(217, 70, 239, 0.08), inset 0 0 34px rgba(59, 130, 246, 0.026);
+  backdrop-filter: blur(20px);
+}
+
+.about-panel h1 {
+  font-size: clamp(3.4rem, 7vw, 6.2rem);
+  line-height: 0.95;
+}
+
+.about-panel p:not(.eyebrow) {
+  max-width: 66ch;
+  color: #d8d0da;
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  font-weight: 300;
+  line-height: 1.74;
+}
+
+.about-traits {
+  display: grid;
+  gap: 16px;
+}
+
+.trait-card {
+  --trait-color: var(--brain);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px;
+  border: 1px solid color-mix(in srgb, var(--trait-color), transparent 48%);
+  border-radius: 18px;
+  background: rgba(7, 7, 12, 0.58);
+  box-shadow:
+    inset 0 0 22px color-mix(in srgb, var(--trait-color), transparent 92%),
+    0 0 22px color-mix(in srgb, var(--trait-color), transparent 84%);
+  backdrop-filter: blur(18px);
+}
+
+.eye-trait {
+  --trait-color: var(--eye);
+}
+
+.ear-trait {
+  --trait-color: var(--ear);
+}
+
+.mouth-trait {
+  --trait-color: var(--mouth);
+}
+
+.trait-dot {
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--trait-color);
+  box-shadow: 0 0 16px var(--trait-color);
+}
+
+.trait-card h2 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.trait-card p {
+  margin: 0;
+  color: #c9c1ca;
+  font-size: 0.95rem;
+  line-height: 1.58;
+}
+
+.about-orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 520px;
+}
+
+.about-orbit img {
+  width: min(100%, 460px);
+  opacity: 0.46;
+  filter: saturate(0.78) brightness(0.68) drop-shadow(0 0 28px rgba(217, 70, 239, 0.12));
+  mask-image: radial-gradient(ellipse at 50% 52%, black 32%, rgba(0, 0, 0, 0.86) 56%, transparent 75%);
+}
+
+.about-tags {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.about-tags span {
+  position: absolute;
+  color: #f6edf5;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.72;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.about-tags span:nth-child(1) {
+  top: 18%;
+  left: 8%;
+  color: var(--brain);
+}
+
+.about-tags span:nth-child(2) {
+  top: 38%;
+  right: 0;
+  color: var(--eye);
+}
+
+.about-tags span:nth-child(3) {
+  bottom: 28%;
+  left: 0;
+  color: var(--ear);
+}
+
+.about-tags span:nth-child(4) {
+  right: 14%;
+  bottom: 12%;
+  color: var(--mouth);
+}
+
+/* Contact page layout. */
+.contact-page main {
+  min-height: 100vh;
+  padding: 132px clamp(22px, 7vw, 104px) 72px;
+}
+
+.contact-hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 204px);
+  overflow: hidden;
+}
+
+.contact-card {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 100%);
+  padding: clamp(26px, 5vw, 58px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(7, 7, 12, 0.56);
+  box-shadow: 0 0 34px rgba(59, 130, 246, 0.08), inset 0 0 36px rgba(251, 146, 60, 0.026);
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+
+.contact-card .section-rule {
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--eye), var(--mouth), transparent);
+}
+
+.contact-card h1 {
+  margin: 14px auto 30px;
+  max-width: 680px;
+  font-size: clamp(3.6rem, 8vw, 7.6rem);
+}
+
+.contact-card p:not(.eyebrow) {
+  max-width: 520px;
+  margin: 0 auto 26px;
+  color: #d8d0da;
+  font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+  line-height: 1.8;
+}
+
+.contact-card a {
+  --active-color: var(--mouth);
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.contact-links a:nth-child(2) {
+  --active-color: var(--eye);
+  opacity: 0.82;
+  box-shadow:
+    inset 0 0 10px color-mix(in srgb, var(--active-color), transparent 92%),
+    0 0 14px color-mix(in srgb, var(--active-color), transparent 68%);
+}
+
+.contact-icons {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.contact-icons .feature-icon {
+  position: absolute;
+  opacity: 0.42;
+  transform: scale(1.35);
+}
+
+.contact-icons .brain-icon {
+  top: 8%;
+  left: 12%;
+}
+
+.contact-icons .eye-icon {
+  top: 20%;
+  right: 12%;
+}
+
+.contact-icons .ear-icon {
+  left: 18%;
+  bottom: 16%;
+}
+
+.contact-icons .mouth-icon {
+  right: 18%;
+  bottom: 12%;
+}
+
+@keyframes panelIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dashMove {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes brainPulse {
+  50% {
+    filter: drop-shadow(0 0 12px var(--brain));
+    transform: translateY(-2px) scale(1.025);
+  }
+}
+
+@keyframes eyeFocus {
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes mouthPulse {
+  50% {
+    transform: scale(1.035, 1.065);
+  }
+}
+
+/* Mobile layout: swap detailed face interaction for clearer project cards. */
+@media (max-width: 980px) {
+  .site-header {
+    position: absolute;
+    padding: 24px 22px;
+  }
+
+  .main-nav {
+    gap: 18px;
+    font-size: 0.68rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 108px 20px 40px;
+  }
+
+  .hero-copy {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    max-width: 520px;
+    z-index: 3;
+  }
+
+  h1 {
+    font-size: clamp(3.2rem, 14vw, 5rem);
+  }
+
+  .intro {
+    max-width: 34rem;
+    margin-top: 24px;
+  }
+
+  .face-stage {
+    display: none;
+  }
+
+  .mobile-work {
+    position: relative;
+    display: grid;
+    gap: 16px;
+    margin-top: 44px;
+  }
+
+  .mobile-work::before {
+    position: absolute;
+    top: -190px;
+    right: -110px;
+    width: 320px;
+    height: 420px;
+    content: "";
+    background: url("face.svg") center / cover no-repeat;
+    opacity: 0.22;
+    filter: saturate(0.82) brightness(0.72);
+    mask-image: radial-gradient(ellipse at center, black 35%, transparent 72%);
+    pointer-events: none;
+  }
+
+  .mobile-card {
+    --card-color: var(--brain);
+    position: relative;
+    z-index: 2;
+    padding: 22px;
+    border: 1px solid color-mix(in srgb, var(--card-color), transparent 40%);
+    border-radius: 18px;
+    background: rgba(8, 8, 13, 0.76);
+    box-shadow: 0 0 28px color-mix(in srgb, var(--card-color), transparent 78%);
+    backdrop-filter: blur(16px);
+  }
+
+  .eye-card {
+    --card-color: var(--eye);
+  }
+
+  .ear-card {
+    --card-color: var(--ear);
+  }
+
+  .mouth-card {
+    --card-color: var(--mouth);
+  }
+
+.mobile-card h2 {
+    margin: 12px 0;
+    font-size: 2rem;
+  }
+
+  .mobile-card p {
+    color: #d7d0d8;
+    line-height: 1.7;
+  }
+
+  .mobile-card a {
+    --active-color: var(--card-color);
+  }
+
+  .mobile-card .feature-icon {
+    --icon-color: var(--card-color);
+    margin-bottom: 14px;
+  }
+
+  .about-section,
+  .contact-section {
+    padding: 80px 0;
+  }
+
+  .about-page main {
+    padding: 100px 20px 56px;
+  }
+
+  .contact-page main {
+    padding: 100px 20px 56px;
+  }
+
+  .about-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .about-orbit {
+    min-height: 360px;
+    order: -1;
+  }
+
+  .about-traits {
+    order: -1;
+  }
+
+  .contact-hero {
+    min-height: auto;
+  }
+
+  .contact-icons {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 560px) {
+  .brand {
+    font-size: 1rem;
+  }
+
+  .main-nav {
+    gap: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  .hero {
+    padding-top: 96px;
+  }
+
+  .hint {
+    margin-top: 24px;
+  }
+}
