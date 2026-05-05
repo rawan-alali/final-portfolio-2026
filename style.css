@@ -1,4 +1,4 @@
- /* Main color palette for the four parts of expression. */
+/* Main color palette for the four parts of expression. */
 :root {
   --bg: #020204;
   --charcoal: #09090e;
@@ -461,17 +461,19 @@ h1 {
 .project-popup {
   position: absolute;
   z-index: 8;
-  width: min(330px, 26vw);
-  padding: 30px 28px;
-  border: 1px solid color-mix(in srgb, var(--active-color), white 10%);
-  border-radius: 22px;
+  width: min(286px, 21vw);
+  max-height: calc(100vh - 170px);
+  padding: 24px 22px;
+  overflow-y: auto;
+  border: 1px solid color-mix(in srgb, var(--active-color), white 8%);
+  border-radius: 20px;
   color: var(--text);
-  background: rgba(5, 5, 10, 0.76);
+  background: rgba(5, 5, 10, 0.78);
   box-shadow:
-    inset 0 0 26px color-mix(in srgb, var(--active-color), transparent 92%),
-    0 0 22px color-mix(in srgb, var(--active-color), transparent 62%),
-    0 0 58px color-mix(in srgb, var(--active-color), transparent 82%);
-  backdrop-filter: blur(20px);
+    inset 0 0 20px color-mix(in srgb, var(--active-color), transparent 94%),
+    0 0 16px color-mix(in srgb, var(--active-color), transparent 70%),
+    0 0 42px color-mix(in srgb, var(--active-color), transparent 86%);
+  backdrop-filter: blur(18px);
   opacity: 0;
   transform: translateY(14px) scale(0.95);
   transform-origin: center;
@@ -480,21 +482,21 @@ h1 {
 
 .project-popup[data-feature="brain"] {
   top: 12%;
-  right: clamp(58px, 7vw, 118px);
+  right: clamp(16px, 2.4vw, 46px);
 }
 
 .project-popup[data-feature="eye"] {
   top: 31%;
-  right: clamp(58px, 7vw, 118px);
+  right: clamp(16px, 2.4vw, 46px);
 }
 
 .project-popup[data-feature="ear"] {
   top: 24%;
-  right: clamp(58px, 7vw, 118px);
+  right: clamp(16px, 2.4vw, 46px);
 }
 
 .project-popup[data-feature="mouth"] {
-  right: clamp(58px, 7vw, 118px);
+  right: clamp(16px, 2.4vw, 46px);
   bottom: 9%;
 }
 
@@ -523,9 +525,9 @@ h1 {
 .feature-icon {
   --icon-color: var(--active-color);
   position: relative;
-  width: 58px;
-  height: 58px;
-  margin-bottom: 18px;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 14px;
   border: 1.5px solid currentColor;
   border-radius: 16px;
   color: var(--icon-color);
@@ -656,8 +658,8 @@ h1 {
 }
 
 .feature-icon svg {
-  width: 31px;
-  height: 31px;
+  width: 28px;
+  height: 28px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2.3;
@@ -667,34 +669,34 @@ h1 {
 
 .brain-icon svg,
 .popup-mark[data-mark="idea"] svg {
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
 }
 
 .mouth-icon svg,
 .popup-mark[data-mark="story"] svg {
-  width: 34px;
+  width: 31px;
 }
 
 .project-popup h2 {
-  margin: 14px 0 18px;
-  font-size: 2rem;
-  line-height: 1;
+  margin: 12px 0 14px;
+  font-size: 1.55rem;
+  line-height: 1.02;
 }
 
 .project-popup p:not(.popup-kicker) {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: #d6d0d8;
-  font-size: 0.95rem;
-  line-height: 1.72;
+  font-size: 0.84rem;
+  line-height: 1.58;
 }
 
 .popup-note {
   display: block;
-  margin-top: 16px;
+  margin-top: 12px;
   color: color-mix(in srgb, var(--active-color), white 24%);
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 .project-link,
@@ -704,9 +706,9 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  margin-top: 18px;
-  padding: 0 18px;
+  min-height: 40px;
+  margin-top: 14px;
+  padding: 0 16px;
   border: 1px solid var(--active-color);
   border-radius: 999px;
   color: var(--text);
